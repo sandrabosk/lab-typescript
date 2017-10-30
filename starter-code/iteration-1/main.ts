@@ -1,18 +1,45 @@
-// Iteration 1
-// 1. Create an array of strings
+class myTaskList {
 
-// 2. Create a function to add a task in to the array, call it `addTask`, the function has to accept a string and don't have to return anything.
+  public tasks: string[];
+  public task: string;
 
-// 3. Create a function to list all tasks, it must show in the console de task.
+  constructor ( ) {
+    this.tasks = [];
+  }
 
-// 4. Create a function to delete a task, you must find the task inside the array and delete it.
 
-// Execution
-console.log("Number of items:", addTask('This is our first task'));
-console.log("Number of items:", addTask('Eat pizza 🍕 yummy!!!'));
-console.log("Number of items:", addTask('Finish this iteration 1!! 🤓'));
-console.log("Number of items:", addTask('Finish this iteration 2!! 🤓'));
-console.log("Number of items:", addTask('Finish this iteration 3!! 🤓'));
-listAllTasks();
-console.log("Number of items:", deleteTask('Finish this iteration 1!! 🤓'));
-listAllTasks();
+
+  addTask(task) {
+    this.tasks.push(task);
+    console.log("task: " + task)
+    return this.tasks.length;
+  }
+
+  listAllTasks() {
+    console.log("List all tasks: ")
+    // for (let task of this.tasks) {
+    //   console.log(task);
+    // }
+    this.tasks.forEach((task)=>{
+      console.log(task);
+    });
+  }
+
+  deleteTask(task) {
+    let foundTask = this.tasks.indexOf(task);
+    this.tasks.splice(foundTask,1);
+    return this.tasks.length;
+  }
+}
+
+let tasklist = new myTaskList();
+//
+console.log("Number of items:", tasklist.addTask('This is our first task'));
+console.log("Number of items:", tasklist.addTask('Eat pizza 🍕 yummy!!!'));
+console.log("Number of items:", tasklist.addTask('Finish this iteration 1!! 🤓'));
+console.log("Number of items:", tasklist.addTask('Finish this iteration 2!! 🤓'));
+console.log("Number of items:", tasklist.addTask('Finish this iteration 3!! 🤓'));
+
+tasklist.listAllTasks();
+console.log("Number of items:", tasklist.deleteTask('Finish this iteration 1!! 🤓'));
+tasklist.listAllTasks();
